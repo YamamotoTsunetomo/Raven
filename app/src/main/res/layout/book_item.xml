@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/book_item_shape"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/ivCover"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:contentDescription="book cover"
+        app:layout_constraintDimensionRatio="7:10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/black" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="1"
+        android:textColor="@color/font_main"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/ivCover"
+        app:layout_constraintStart_toStartOf="@id/ivCover"
+        app:layout_constraintTop_toBottomOf="@id/ivCover"
+        tools:text="Compiler design: Virtual machines" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_regular"
+        android:lines="2"
+        android:textColor="#555"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="Helmut Seidl, Woflgang Paul, Springer 2010 Copyright" />
+
+    <TextView
+        android:id="@+id/tvFileType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/book_item_file_type_shape"
+        android:ellipsize="marquee"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:paddingVertical="4dp"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintEnd_toEndOf="@id/ivCover"
+        app:layout_constraintTop_toTopOf="@id/ivCover"
+        tools:text="PDF" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search.SearchFragment">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSearch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/search_options_view_shape"
+        android:hint="Search"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/searchGuideline"
+        app:layout_constraintEnd_toStartOf="@id/btnSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <View
+        android:id="@+id/btnSearch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/search_button_selector"
+        app:layout_constraintBottom_toBottomOf="@id/etSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/etSearch"
+        app:layout_constraintTop_toTopOf="@id/etSearch" />
+
+    <ImageView
+        android:id="@+id/ivSearchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@id/btnSearch"
+        app:layout_constraintEnd_toEndOf="@id/btnSearch"
+        app:layout_constraintStart_toStartOf="@id/btnSearch"
+        app:layout_constraintTop_toTopOf="@id/btnSearch" />
+
+    <com.tsunetomo.raven.ui.search.search_options.SearchOptionsView
+        android:id="@+id/sovFileType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/sovSortType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etSearch" />
+
+    <com.tsunetomo.raven.ui.search.search_options.SearchOptionsView
+        android:id="@+id/sovSortType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sovFileType"
+        app:layout_constraintTop_toTopOf="@+id/sovFileType" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItems"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemsGuideline" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/bookLoadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX=".8"
+        android:scaleY=".8"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/rvItems"
+        app:layout_constraintEnd_toEndOf="@id/rvItems"
+        app:layout_constraintStart_toStartOf="@id/rvItems"
+        app:layout_constraintTop_toTopOf="@id/rvItems"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/anim_book" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/searchGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="66dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/itemsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="66dp" />
+
+    <View
+        android:id="@+id/btnFilter"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_button_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_filter"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@id/btnFilter"
+        app:layout_constraintEnd_toEndOf="@id/btnFilter"
+        app:layout_constraintStart_toStartOf="@id/btnFilter"
+        app:layout_constraintTop_toTopOf="@id/btnFilter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

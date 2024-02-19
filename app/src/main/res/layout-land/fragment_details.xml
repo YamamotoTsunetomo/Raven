@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:padding="16dp"
+    tools:context=".ui.details.DetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivCover"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:background="#EFEFEF"
+            android:contentDescription="book cover"
+            app:layout_constraintDimensionRatio="7:10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/font_main"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivCover"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Compiler design: Virtual machines, syntactic analysis and verification for machines" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="Helmut Seidl, Woflgang Paul" />
+
+        <TextView
+            android:id="@+id/tvPublisher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="#555"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+            tools:text="Springer 2010" />
+
+        <com.tsunetomo.raven.ui.details.progress_button.ProgressButtonView
+            android:id="@+id/btnDownload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvPublisher" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingBottom="32dp"
+            android:textColor="@color/font_main"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/ivCover"
+            tools:text="@tools:sample/lorem/random" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

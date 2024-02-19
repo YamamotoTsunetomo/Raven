@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:ellipsize="marquee"
+        android:fontFamily="@font/poppins_regular"
+        android:maxLines="1"
+        android:textColor="#555"
+        android:textSize="14sp"
+        tools:text="File size" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/search_options_view_shape"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tvChosen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="1"
+            android:textColor="@color/font_main"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/ivArrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="PDF" />
+
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@id/tvChosen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvChosen" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvOptions"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tvChosen" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

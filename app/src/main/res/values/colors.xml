@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="font_main">#121212</color>
+
+    <color name="subtle_gray">#11000000</color>
+    <color name="isabelline">#edede9</color>
+    <color name="timberwolf">#d6ccc2</color>
+    <color name="linen">#f5ebe0</color>
+    <color name="champagne_pink">#e3d5ca</color>
+    <color name="pale_dogwood">#d5bdaf</color>
+
+</resources>
