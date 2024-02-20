@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -87,6 +88,20 @@ class SearchFragment : Fragment() {
                 SearchOption.MOST_RELEVANT
             )
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (isSearchExpanded) {
+                        isSearchExpanded = false
+                        toggleSearchView(false)
+                    } else {
+                        this.remove()
+                        requireActivity().onBackPressedDispatcher.onBackPressed()
+                    }
+                }
+            })
     }
 
     private fun setupListeners() = binding?.apply {
@@ -111,7 +126,10 @@ class SearchFragment : Fragment() {
         btnFilter.setOnClickListener {
             isSearchExpanded = !isSearchExpanded
 
-            if (!isSearchExpanded) {
+            val nonEmptyFilters = sovSortType.getSelectedOptions().isNotEmpty() ||
+                    sovFileType.getSelectedOptions().isNotEmpty()
+
+            if (!isSearchExpanded && nonEmptyFilters) {
                 sovSortType.clearFilter()
                 sovFileType.clearFilter()
                 Toast.makeText(requireContext(), "Filters removed", Toast.LENGTH_SHORT).show()
@@ -154,45 +172,27 @@ class SearchFragment : Fragment() {
 
     private fun toggleSearchView(maximize: Boolean) {
         val unwrappedHeight = requireContext().toPx(66)
+        val wrappedHeight = resources.displayMetrics.heightPixels.toFloat() / 2
 
-        val itemsWrapped = resources.displayMetrics.heightPixels.toFloat()
-        val searchWrapped = itemsWrapped / 2
-
-        binding?.bookLoadingView?.isVisible = !maximize
+        binding?.rvItems?.animate()?.alpha(if (maximize) 0f else 1f)
+        binding?.bookLoadingView?.isVisible = !maximize && binding?.rvItems?.isVisible == false
         binding?.sovFileType?.isVisible = maximize
         binding?.sovSortType?.isVisible = maximize
 
-        val itemsValues = if (maximize) {
-            floatArrayOf(unwrappedHeight, itemsWrapped)
+        val values = if (maximize) {
+            floatArrayOf(unwrappedHeight, wrappedHeight)
         } else {
-            floatArrayOf(itemsWrapped, unwrappedHeight)
+            floatArrayOf(wrappedHeight, unwrappedHeight)
         }
 
-        val searchValues = if (maximize) {
-            floatArrayOf(unwrappedHeight, searchWrapped)
-        } else {
-            floatArrayOf(searchWrapped, unwrappedHeight)
-        }
-
-        val animatorItems = ValueAnimator.ofFloat(*itemsValues).apply {
-            interpolator = AccelerateDecelerateInterpolator()
-            duration = 300L
-            addUpdateListener {
-                binding?.itemsGuideline?.setGuidelineBegin((it.animatedValue as Float).toInt())
-            }
-        }
-
-
-        val animatorSearch = ValueAnimator.ofFloat(*searchValues).apply {
+        ValueAnimator.ofFloat(*values).apply {
             interpolator = AccelerateDecelerateInterpolator()
             duration = 300L
             addUpdateListener {
                 binding?.searchGuideline?.setGuidelineBegin((it.animatedValue as Float).toInt())
             }
+            start()
         }
-
-        animatorItems.start()
-        animatorSearch.start()
     }
 
     private fun hideKeyboard() {
